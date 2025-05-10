@@ -1,49 +1,34 @@
-
-
 public class App {
 
-    static No inicio = null;
-    static No fim = null;
+    
 
     public static void main(String[] args) {
+        
+        // Pilha p1 = new Pilha();
 
-        insereInicio(5);
-        exibe(inicio);
+        // p1.empilhar(2);
+        // p1.empilhar(4);
+        // p1.empilhar(3);
+
+        // p1.exibe();
+
+        // System.out.println(p1.topo());
 
 
-    }
-
-    private static void insereInicio(int x) {
-        No novo = new No(x);
-        if(inicio == null){
-            inicio = novo;
+        ListaPrima lp1 = new ListaPrima();
+        int N = 42;
+        for(int i = 0; i < N + 1; i++){
+            lp1.inserir(i);
         }
-        novo.prox = inicio;
-        inicio = novo;
+
+        lp1.exibeInverso();
+
+        lp1.filtrar(N);
+
+        lp1.exibeInverso();
         
     }
 
-    private static void insereFim(int x) {
-
-    }
-
-    private static void removeInicio() {
-
-    }
-
-    private static void removeFim() {
-
-    }
-
-    private static void exibe(No temp) {
-        if(temp != null){
-            System.out.println(temp.valor);
-            exibe(temp.prox);
-        }
-    }
-
-    private static void exibeInverso() {
-
-    }
+   
 
 }
