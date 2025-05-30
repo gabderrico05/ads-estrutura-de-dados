@@ -5,6 +5,7 @@ public class ListasDuplamenteLigadas {
     public static void main(String[] args) {
 
         inserirOrdenado(3);
+        
         inserirOrdenado(2);
  
 
