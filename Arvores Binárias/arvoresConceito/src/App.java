@@ -17,8 +17,6 @@ public class App {
 
         exibir(raiz);
 
-        maior(raiz);
-
         System.out.println("Maior valor: " + maior(raiz));
         System.out.println("Menor valor: " + menor(raiz));
 
@@ -26,7 +24,8 @@ public class App {
 
         exibeFolhas(raiz);
 
-        System.out.println("profundidade da arvore" + profundidade(raiz));
+        System.out.println("profundidade da arvore " + profundidade(raiz));
+        System.out.println("tamanho da arvore " + tamanho(raiz, 1));
 
     }
 
@@ -107,18 +106,17 @@ public class App {
         if(temp != null){
 
             if(temp.esq != null){
-               return tamanho(temp.esq, i++);
+                i++;
+              i = tamanho(temp.esq, i);
             }
-            else if(temp.dir != null){
-                return tamanho(temp.dir, i)
+            if(temp.dir != null){
+                i++;
+              i = tamanho(temp.dir, i++);
             }
-
-            
-            
-            
-            
-            tamanho(temp, i)(temp.dir, i);
+           return i;
         }
+        return 0;
+        
     }
 
 
@@ -173,6 +171,34 @@ public class App {
         else
             System.out.println();
         
+    }
+
+    static boolean existe(NoA temp, int x){
+
+         if(temp != null){
+
+            if(temp.valor == x){
+
+                return true;
+            }
+            else {
+                boolean e; 
+
+                 if(temp.esq != null){
+            
+                    e = existe(temp.esq, x);
+                 }
+                 if(temp.dir != null){
+                
+                    e = existe(temp.dir, x);
+                 }
+            }
+
+
+           
+           
+        }
+        return 0;
     }
 
 
