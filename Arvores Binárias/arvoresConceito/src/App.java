@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class App {
 
@@ -32,7 +34,8 @@ public class App {
         exibeFolhas(raiz);
 
        
-
+        balancear();
+        exibeArvore(raiz, 0);
 
 
     }
@@ -395,4 +398,29 @@ public class App {
         return y;
     }
     
-}
+    // Adicione este método para coletar os valores em ordem
+    private static void emOrdem(NoA n, List<Integer> lista) {
+        if (n == null) return;
+        emOrdem(n.esq, lista);
+        lista.add(n.valor);
+        emOrdem(n.dir, lista);
+    }
+
+    // Método para construir árvore balanceada a partir da lista ordenada
+    private static NoA construirBalanceada(List<Integer> lista, int inicio, int fim) {
+        if (inicio > fim) return null;
+        int meio = (inicio + fim) / 2;
+        NoA novo = new NoA(lista.get(meio));
+        novo.esq = construirBalanceada(lista, inicio, meio - 1);
+        novo.dir = construirBalanceada(lista, meio + 1, fim);
+        return novo;
+    }
+
+    // Método principal de balanceamento
+    public static void balancear() {
+        List<Integer> lista = new ArrayList<>();
+        emOrdem(raiz, lista);
+        raiz = construirBalanceada(lista, 0, lista.size() - 1);
+    }
+
+    }
